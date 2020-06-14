@@ -7,6 +7,7 @@ That includes use of #hashtags, mentions of @Sydney, and free form text searches
 
 - php 7.2
 - composer
+- apply the twiiter API access keys on https://developer.twitter.com/en/docs/basics/getting-started
 
 ### Install
 
@@ -41,3 +42,6 @@ The searched twittes including the following information:
 ### Technologies Used
 * Language: PHP7.2, Javascript, Twig
 * Technology: Symfony 3.4 framework, JavaScript, Jquery, Ajax, Bootstrap 4.
+
+### Screenshots
+
