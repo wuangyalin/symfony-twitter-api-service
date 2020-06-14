@@ -43,5 +43,6 @@ The searched twittes including the following information:
 * Language: PHP7.2, Javascript, Twig
 * Technology: Symfony 3.4 framework, JavaScript, Jquery, Ajax, Bootstrap 4.
 
-### Screenshots
+### Screenshot
 
+![Screenshot](https://github.com/wuangyalin/symfony-twitter-api-service/blob/master/web/screenshots/screenshot.png)
