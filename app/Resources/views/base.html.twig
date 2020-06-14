@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+                    <link rel="stylesheet" type="text/css" href="{{ asset("css/bootstrap.min.css") }}"/>
+            <style>
+                .card .card-body .message {
+                padding-left: 80px;
+                }
+                .card .card-body .message::after {
+                clear: both;
+                }
+                .card {
+                    padding: 40px;
+                }
+            </style>
+        {% block stylesheets %}
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <script src="{{ asset("js/jquery.min.js") }}"></script>
+        {% block javascripts %}{% endblock %}
+        
+    </body>
+</html>

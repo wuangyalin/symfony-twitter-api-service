@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<div class="jumbotron justify-content-center">
+
+<h1>Twiiter API Service</h1>
+  
+</div>
+<div class="row">
+<div class="col-md-4">
+      <a class="nav-link" id="serach_hashtag" href="#" onclick="seachTwittes('Sydney','#')" >Get twittes with #Sydney</a>
+    </div>
+    <div class="col-md-4">
+      <a class="nav-link" id="search_user" href="#" onclick="seachTwittes('Sydney','@')">Get twittes mentioned @Sydney</a>
+    </div>
+    <div class="col-md-4">
+      <form class="form-inline justify-content-center" method="post" id="search_form">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Search Twittes</label>
+          {{ form_widget(form.keywords) }}{{ form_errors(form.keywords) }}
+          {{ form_row(form._token) }}
+          {# <input type="hidden" id="csrf_token" data-token="{{ csrf_token('twitter_search') }}"> #}
+        </div>
+        {{ form_widget(form.search) }}
+      </form>
+    </div>
+
+</div>
+<div id="loading_spinner" class="spinner-border text-secondary d-none" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+
+
+
+<div id="twittes"></div>
+{% endblock %}
+
+{% block javascripts %}
+<script language="javascript">
+  $(function () {
+      //form submit
+      $('#search_form').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax(
+        {
+        url: '{{ form.vars.action }}',
+        type: $(this).attr('method'),
+        data: $(this).serialize(),
+        beforeSend: function () {
+          showloadingSpinner();
+        },
+        success: function (data)
+        {
+            var status = data['status'];
+            if(status == 400){
+              $('#twittes').html(data['data']);
+            }else if(status == 200){
+              $('#twittes').html(data['data']);
+            }
+        },
+        complete: function (jqXHR){            
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert('An unknown error has occurred.'); 
+        }
+        });
+
+    });
+  });
+
+  // search #Sydney or @Sydney
+  function seachTwittes(keywords,option){
+    $.ajax({
+        url: '{{ path('search') }}',
+        type: $(this).attr('method'),
+        data: {
+          keywords: keywords,
+          option: option
+        },
+
+        beforeSend: function () {
+          showloadingSpinner();
+        },
+        success: function (data) {
+          $('#twittes').html(data);
+        },
+        complete: function () {
+          
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          alert('An unknown error has occurred.'); 
+        }
+    });
+  }
+
+  function showloadingSpinner(){
+    $('#twittes').html('<h3>Loading...</h3>');
+  }
+</script>
+{% endblock %}
