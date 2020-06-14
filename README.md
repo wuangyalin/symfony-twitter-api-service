@@ -1,77 +1,43 @@
-Symfony Standard Edition
-========================
+## Twitter API service
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+Creating a web interface, using Symfnony 3.4, which searches the Twitter API for all tweets related to Sydney or whatever free text.
+That includes use of #hashtags, mentions of @Sydney, and free form text searches.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+### Prerequisites
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+- php 7.2
+- composer
 
-What's inside?
---------------
+### Install
 
-The Symfony Standard Edition is configured with the following defaults:
+```
+composer install
+```
 
-  * An AppBundle you can use to start coding;
+### Run
 
-  * Twig as the only configured template engine;
+```
+php bin/console server:run
+```
 
-  * Doctrine ORM/DBAL;
+### Test
 
-  * Swiftmailer;
+```
+./vendor/bin/simple-phpunit
+```
 
-  * Annotations enabled for everything.
+### Description
+This is a single pgae web application, users are able to search twittes based on three different options:
+1. Search twittes which include #Sydney.
+2. Search twittes which mentioned user @Sydney.
+3. Search twittes by any text.
 
-It comes pre-configured with the following bundles:
+The searched twittes including the following information:
+1. Users' avatar.
+2. The twitte posted time.
+3. The twitte infomation.
+4. Retwitte infomation if has. (Sometimes the search keywords are in the original twitte).
 
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+### Technologies Used
+* Language: PHP7.2, Javascript, Twig
+* Technology: Symfony 3.4 framework, JavaScript, Jquery, Ajax, Bootstrap 4.
